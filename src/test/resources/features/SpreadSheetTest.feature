@@ -16,17 +16,16 @@
 #""
 ## (Comments)
 #Sample Feature Definition Template
-@tag
 Feature: Tests do SpreadSheet
   I want to use this template for my feature file
 
-  @tag1
+  @Positive
   Scenario: Generating a new SpreadSheet without any Incomes or Expenses For the First month of 2021
     Given I want to generate a new feature
     When I set the year 2021 and month 1
     Then I validate the SpreadSheet with year 2021 and month "January"
 
-  @tag2
+  @Positive
   Scenario Outline: Gerenate a SpreadSheet For February do 2021 end adding a not received Income do 100.00 and a Expense of 50.00 not paid
     Given I want to generate a new feature
     When I set the year <year> and month <month>
