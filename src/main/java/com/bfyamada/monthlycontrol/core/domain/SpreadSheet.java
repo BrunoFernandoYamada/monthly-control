@@ -12,7 +12,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,6 +30,13 @@ public class SpreadSheet {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private String id;
 	
+	@NotNull(message = "Month is mantatory")
+	@Size(min = 4, max = 4, message = "Invalid value for year")
+	@Column(nullable = false)
+	private Integer year;
+	
+	@Min(value = 1, message = "Invalid value for month")
+	@Max(value = 12, message = "Invalid value for month")
 	@NotNull(message = "Month is mantatory")
 	@Column(nullable = false)
 	private Integer month;
@@ -43,7 +53,7 @@ public class SpreadSheet {
 	@Column(nullable = true)
 	private BigDecimal totalNotPaid;
 	
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private boolean isClosed;
 	
 	@Column(nullable = true)

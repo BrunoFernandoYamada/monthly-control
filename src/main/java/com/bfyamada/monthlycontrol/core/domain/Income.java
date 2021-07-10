@@ -41,6 +41,9 @@ public class Income {
 	@Column(nullable = false)
 	private BigDecimal value;
 	
+	@Column(nullable = false)
+	private boolean isReceived;
+	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "spreadSheetId")

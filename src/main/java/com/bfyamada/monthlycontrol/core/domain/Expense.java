@@ -42,6 +42,9 @@ public class Expense {
 	@Column(nullable = false)
 	private BigDecimal value;
 	
+	@Column(nullable = false)
+	private boolean isPaid;
+	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "spreadSheetId")
