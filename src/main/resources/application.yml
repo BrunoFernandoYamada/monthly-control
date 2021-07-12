@@ -1,7 +1,13 @@
-server:  port: 8082
 spring:
   application:
     name: monthly-control
+  jpa: 
+    properties:
+      hibernate:
+        formatSql: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create
   h2:
     console:
       enabled: true
