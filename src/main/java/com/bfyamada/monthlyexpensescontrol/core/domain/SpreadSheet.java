@@ -54,8 +54,6 @@ public class SpreadSheet implements Serializable {
 		this.isClosed = isClosed;
 		this.balance = balance;
 	}
-	
-	
 
 	@JsonIgnore
 	@EmbeddedId
@@ -169,7 +167,7 @@ public class SpreadSheet implements Serializable {
 		return expenses;
 	}
 
-	public void setExpense(List<Expense> expenses) {
+	public void setExpenses(List<Expense> expenses) {
 		this.expenses = expenses;
 	}
 
