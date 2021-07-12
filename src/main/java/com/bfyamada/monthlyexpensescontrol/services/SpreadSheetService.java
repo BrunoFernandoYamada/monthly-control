@@ -21,8 +21,12 @@ public class SpreadSheetService {
     @Autowired
     private SpreadSheetRepository spreadSheetRepository;
 
-    public SpreadSheet findByMonthAndYear(Integer month, Integer year) {
-        return spreadSheetRepository.findById(new SpreadSheetID(month,year)).orElseThrow(() -> new ObjectNotFoundException("SpreedSheet not found!"));
+    public SpreadSheet findByYearAndMonth(Integer year, Integer month) {
+        return spreadSheetRepository.findById(new SpreadSheetID(year,month)).orElseThrow(() -> new ObjectNotFoundException("SpreedSheet not found!"));
+    }
+
+    public List<SpreadSheet> findByYear(Integer year){
+        return spreadSheetRepository.findByYear(year);
     }
 
     public Page<SpreadSheet> findAll(Pageable pageable){
@@ -34,9 +38,7 @@ public class SpreadSheetService {
         return spreadSheetRepository.save(spreadSheet);
     }
 
-    public List<SpreadSheet> findAllByYear(){
-        return spreadSheetRepository.findAllByYear(Calendar.getInstance().get(Calendar.YEAR));
-    }
+
 
     private void validateSpreadSheet(SpreadSheet spreadSheet){
 
@@ -52,7 +54,5 @@ public class SpreadSheetService {
             throw ex;
         }
     }
-
-
 
 }

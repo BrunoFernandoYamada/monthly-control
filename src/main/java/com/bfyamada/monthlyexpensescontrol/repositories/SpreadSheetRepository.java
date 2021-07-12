@@ -12,6 +12,6 @@ import com.bfyamada.monthlyexpensescontrol.core.domain.SpreadSheetID;
 
 @Repository
 public interface SpreadSheetRepository extends JpaRepository<SpreadSheet, SpreadSheetID> {
-	@Query(value = "Select * From SpreadSheet ss where ss.id.year :=currentYear",nativeQuery = true )
-    List<SpreadSheet> findAllByYear(@Param("currentYear") Integer currentYear);
+	@Query(value = "Select * From Spread_Sheet_TB where year = ?",nativeQuery = true )
+    List<SpreadSheet> findByYear(@Param("year") Integer year);
 }

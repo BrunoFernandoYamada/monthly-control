@@ -27,7 +27,25 @@ public class DBService {
 	
 	
 	public void instantiateDatabase(){
-		
+		//2020
+		SpreadSheet spreadSheet0 = new SpreadSheet(2020, 12, new BigDecimal(0.0), new BigDecimal(0.0),new BigDecimal(0.0),new BigDecimal(0.0), true,new BigDecimal(0.0));
+
+		Income a1 = new Income(null, "Salário", "Recebimento de Salario do mês de Julho",new BigDecimal(6500.00), true, spreadSheet0);
+		Income a2 = new Income(null, "Aluguel", "Casa alugada",new BigDecimal(800.99), true, spreadSheet0);
+		Income a3 = new Income(null, "Décimo terceiro", "Décimo de 2020",new BigDecimal(6000.00), true, spreadSheet0);
+
+		Expense b1 = new Expense(null, "Aluguél", null, new BigDecimal(950.00), true, spreadSheet0);
+		Expense b2 = new Expense(null, "Luz", null, new BigDecimal(150.00), true, spreadSheet0);
+		Expense b3 = new Expense(null, "Gás", null, new BigDecimal(95.00), true, spreadSheet0);
+		Expense b4 = new Expense(null, "Escola", null, new BigDecimal(980.00), true, spreadSheet0);
+		Expense b5 = new Expense(null, "Gasolina", null, new BigDecimal(250.00), true, spreadSheet0);
+
+		spreadSheetRepository.saveAll(Arrays.asList(spreadSheet0));
+
+		incomeRepository.saveAll(Arrays.asList(a1,a2,a3));
+		expenseRepository.saveAll(Arrays.asList(b1,b2,b3,b4,b5));
+
+		//2021
 		
 		SpreadSheet spreadSheet1 = new SpreadSheet(2021, 1, new BigDecimal(0.0), new BigDecimal(0.0),new BigDecimal(0.0),new BigDecimal(0.0), false,new BigDecimal(0.0));
 		SpreadSheet spreadSheet2 = new SpreadSheet(2021, 2, new BigDecimal(0.0), new BigDecimal(0.0),new BigDecimal(0.0),new BigDecimal(0.0), false,new BigDecimal(0.0));
@@ -57,14 +75,7 @@ public class DBService {
 		
 		Income i13 = new Income(null, "Salário", "Recebimento de Salario do mês de Julho",new BigDecimal(8000.00), true, spreadSheet7);
 		Income i14 = new Income(null, "Aluguel", "Casa alugada",new BigDecimal(816.99), true, spreadSheet7);
-		
-		spreadSheet1.getIncomes().addAll(Arrays.asList(i1,i2));
-		spreadSheet2.getIncomes().addAll(Arrays.asList(i3,i4));
-		spreadSheet3.getIncomes().addAll(Arrays.asList(i5,i6));
-		spreadSheet4.getIncomes().addAll(Arrays.asList(i7,i8));
-		spreadSheet5.getIncomes().addAll(Arrays.asList(i9,i10));
-		spreadSheet6.getIncomes().addAll(Arrays.asList(i11,i12));
-		spreadSheet7.getIncomes().addAll(Arrays.asList(i13,i14));
+
 		
 		Expense e1 = new Expense(null, "Aluguél", null, new BigDecimal(1250.00), false, spreadSheet1);
 		Expense e2 = new Expense(null, "Luz", null, new BigDecimal(250.00), false, spreadSheet1);
@@ -93,14 +104,6 @@ public class DBService {
 		Expense e19 = new Expense(null, "Aluguél", null, new BigDecimal(1250.00), false, spreadSheet7);
 		Expense e20 = new Expense(null, "Luz", null, new BigDecimal(250.00), false, spreadSheet7);
 		Expense e21 = new Expense(null, "Gás", null, new BigDecimal(105.00), false, spreadSheet7);
-		
-		spreadSheet1.getExpenses().addAll(Arrays.asList(e1, e2, e3));
-		spreadSheet2.getExpenses().addAll(Arrays.asList(e4, e5, e6));
-		spreadSheet3.getExpenses().addAll(Arrays.asList(e7, e8, e9));
-		spreadSheet4.getExpenses().addAll(Arrays.asList(e10, e11, e12));
-		spreadSheet5.getExpenses().addAll(Arrays.asList(e13, e14, e15));
-		spreadSheet6.getExpenses().addAll(Arrays.asList(e16 , e17, e18));
-		spreadSheet7.getExpenses().addAll(Arrays.asList(e19, e20, e21));
 		
 		
 		spreadSheetRepository.saveAll(Arrays.asList(spreadSheet1,spreadSheet2, spreadSheet3, spreadSheet4, spreadSheet5, spreadSheet6, spreadSheet7));
