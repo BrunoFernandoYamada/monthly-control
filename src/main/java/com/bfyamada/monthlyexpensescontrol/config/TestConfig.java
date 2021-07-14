@@ -1,18 +1,18 @@
 package com.bfyamada.monthlyexpensescontrol.config;
 
+import com.bfyamada.monthlyexpensescontrol.services.DBService;
 import com.bfyamada.monthlyexpensescontrol.services.emails.EmailService;
+import com.bfyamada.monthlyexpensescontrol.services.emails.MockEmailService;
 import com.bfyamada.monthlyexpensescontrol.services.emails.SmtpEmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.bfyamada.monthlyexpensescontrol.services.DBService;
 import org.springframework.context.annotation.Profile;
 
 @Configuration
-@Profile("dev")
-public class DevConfig {
+@Profile("test")
+public class TestConfig {
 	
 	@Autowired
 	private DBService dbService;
@@ -32,7 +32,7 @@ public class DevConfig {
 
 	@Bean
 	public EmailService emailService() {
-		return new SmtpEmailService();
+		return new MockEmailService();
 	}
 	
 

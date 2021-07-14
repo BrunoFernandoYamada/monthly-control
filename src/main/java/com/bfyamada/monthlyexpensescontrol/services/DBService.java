@@ -2,8 +2,16 @@ package com.bfyamada.monthlyexpensescontrol.services;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
+import com.bfyamada.monthlyexpensescontrol.core.domain.User;
+import com.bfyamada.monthlyexpensescontrol.core.enums.Role;
+import com.bfyamada.monthlyexpensescontrol.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.bfyamada.monthlyexpensescontrol.core.domain.Expense;
@@ -15,6 +23,9 @@ import com.bfyamada.monthlyexpensescontrol.repositories.SpreadSheetRepository;
 
 @Service
 public class DBService {
+
+	@Autowired
+	BCryptPasswordEncoder pe;
 	
 	@Autowired
 	private SpreadSheetRepository spreadSheetRepository;
@@ -24,9 +35,29 @@ public class DBService {
 	
 	@Autowired
 	private ExpenseRepository expenseRepository;
-	
-	
+
+	@Autowired
+	private UserRepository userRepository;
+
+	@Value("${admin.email}")
+	private String adminEmail;
+
+	@Value("${admin.pass}")
+	private String adminPass;
+
 	public void instantiateDatabase(){
+
+
+		//Creating a defalut user
+
+		User admin = new User(null, "Administrator", "Admin", adminEmail, pe.encode(adminPass));
+		Set<Role> roles = new HashSet<>();
+		roles.add(Role.USER);
+		roles.add(Role.ADMIN);
+		admin.addRole(Role.ADMIN);
+
+		userRepository.save(admin);
+
 		//2020
 		SpreadSheet spreadSheet0 = new SpreadSheet(2020, 12, new BigDecimal(0.0), new BigDecimal(0.0),new BigDecimal(0.0),new BigDecimal(0.0), true,new BigDecimal(0.0));
 
