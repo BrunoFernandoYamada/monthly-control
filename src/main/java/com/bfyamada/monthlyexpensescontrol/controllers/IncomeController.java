@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.bfyamada.monthlyexpensescontrol.core.domain.Income;
+import com.bfyamada.monthlyexpensescontrol.core.dto.IncomeDTO;
 import com.bfyamada.monthlyexpensescontrol.services.IncomeService;
 
 @RestController
@@ -36,7 +37,7 @@ public class IncomeController {
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> saveIncome(@RequestBody Income income) {
+	public ResponseEntity<Void> saveIncome(@RequestBody IncomeDTO income) {
 		Income obj = service.saveIncome(income);
 		URI uri =  ServletUriComponentsBuilder.fromCurrentRequest().path("/{year}/{month}").buildAndExpand(obj.getSpreadSheet().getYear(), obj.getSpreadSheet().getMonth()).toUri();
 		return ResponseEntity.created(uri).build();
