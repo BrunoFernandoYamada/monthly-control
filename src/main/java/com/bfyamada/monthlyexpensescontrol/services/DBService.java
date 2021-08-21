@@ -91,6 +91,8 @@ public class DBService {
 		
 		Income i3 = new Income(null, 1, "Salário", new BigDecimal(8000.00), true, spreadSheet2);
 		Income i4 = new Income(null, 2, "Aluguel", new BigDecimal(816.99), true, spreadSheet2);
+		Income i15 = new Income(null, 3,"Décimo terceiro", new BigDecimal(6000.00), true, spreadSheet2);
+		Income i16 = new Income(null, 4,"Vale", new BigDecimal(6000.00), true, spreadSheet2);
 		
 		Income i5 = new Income(null, 1, "Salário", new BigDecimal(8000.00), true, spreadSheet3);
 		Income i6 = new Income(null, 2, "Aluguel", new BigDecimal(816.99), true, spreadSheet3);
@@ -108,39 +110,42 @@ public class DBService {
 		Income i14 = new Income(null, 2,"Aluguel", new BigDecimal(816.99), true, spreadSheet7);
 
 		
-		Expense e1 = new Expense(null, 1, null, new BigDecimal(1250.00), false, spreadSheet1);
-		Expense e2 = new Expense(null, 2, null, new BigDecimal(250.00), false, spreadSheet1);
-		Expense e3 = new Expense(null, 3, null, new BigDecimal(105.00), false, spreadSheet1);
+		Expense e1 = new Expense(null, 1, "Aluguél", new BigDecimal(1250.00), false, spreadSheet1);
+		Expense e2 = new Expense(null, 2, "Luz", new BigDecimal(250.00), false, spreadSheet1);
+		Expense e3 = new Expense(null, 3, "Gás", new BigDecimal(105.00), false, spreadSheet1);
 		
-		Expense e4 = new Expense(null, 1, null, new BigDecimal(1250.00), false, spreadSheet2);
-		Expense e5 = new Expense(null, 2, null, new BigDecimal(250.00), false, spreadSheet2);
-		Expense e6 = new Expense(null, 3, null, new BigDecimal(105.00), false, spreadSheet2);
+		Expense e4 = new Expense(null, 1, "Aluguél", new BigDecimal(1250.00), false, spreadSheet2);
+		Expense e5 = new Expense(null, 2, "Luz", new BigDecimal(250.00), false, spreadSheet2);
+		Expense e6 = new Expense(null, 3, "Gás", new BigDecimal(105.00), false, spreadSheet2);
+		Expense e22 = new Expense(null, 4, "Gás", new BigDecimal(95.00), true, spreadSheet2);
+		Expense e23= new Expense(null, 5, "Escola", new BigDecimal(980.00), true, spreadSheet2);
+		Expense e24 = new Expense(null, 6, "Gasolina", new BigDecimal(250.00), true, spreadSheet2);
 		
-		Expense e7 = new Expense(null, 1, null, new BigDecimal(1250.00), false, spreadSheet3);
-		Expense e8 = new Expense(null, 2, null, new BigDecimal(250.00), false, spreadSheet3);
-		Expense e9 = new Expense(null, 3, null, new BigDecimal(105.00), false, spreadSheet3);
+		Expense e7 = new Expense(null, 1, "Aluguél", new BigDecimal(1250.00), false, spreadSheet3);
+		Expense e8 = new Expense(null, 2, "Luz", new BigDecimal(250.00), false, spreadSheet3);
+		Expense e9 = new Expense(null, 3, "Gás", new BigDecimal(105.00), false, spreadSheet3);
 		
-		Expense e10 = new Expense(null, 1, null, new BigDecimal(1250.00), false, spreadSheet4);
-		Expense e11 = new Expense(null, 2, null, new BigDecimal(250.00), false, spreadSheet4);
-		Expense e12 = new Expense(null, 3, null, new BigDecimal(105.00), false, spreadSheet4);
+		Expense e10 = new Expense(null, 1, "Aluguél", new BigDecimal(1250.00), false, spreadSheet4);
+		Expense e11 = new Expense(null, 2, "Luz", new BigDecimal(250.00), false, spreadSheet4);
+		Expense e12 = new Expense(null, 3, "Gás", new BigDecimal(105.00), false, spreadSheet4);
 		
-		Expense e13 = new Expense(null, 1, null, new BigDecimal(1250.00), false, spreadSheet5);
-		Expense e14 = new Expense(null, 2, null, new BigDecimal(250.00), false, spreadSheet5);
-		Expense e15 = new Expense(null, 3, null, new BigDecimal(105.00), false, spreadSheet5);
+		Expense e13 = new Expense(null, 1, "Aluguél", new BigDecimal(1250.00), false, spreadSheet5);
+		Expense e14 = new Expense(null, 2, "Luz", new BigDecimal(250.00), false, spreadSheet5);
+		Expense e15 = new Expense(null, 3, "Gás", new BigDecimal(105.00), false, spreadSheet5);
 		
-		Expense e16 = new Expense(null, 1, null, new BigDecimal(1250.00), false, spreadSheet6);
-		Expense e17 = new Expense(null, 2, null, new BigDecimal(250.00), false, spreadSheet6);
-		Expense e18 = new Expense(null, 3, null, new BigDecimal(105.00), false, spreadSheet6);
+		Expense e16 = new Expense(null, 1, "Aluguél", new BigDecimal(1250.00), false, spreadSheet6);
+		Expense e17 = new Expense(null, 2, "Luz", new BigDecimal(250.00), false, spreadSheet6);
+		Expense e18 = new Expense(null, 3, "Gás", new BigDecimal(105.00), false, spreadSheet6);
 		
-		Expense e19 = new Expense(null, 1, null, new BigDecimal(1250.00), false, spreadSheet7);
-		Expense e20 = new Expense(null, 2, null, new BigDecimal(250.00), false, spreadSheet7);
-		Expense e21 = new Expense(null, 3, null, new BigDecimal(105.00), false, spreadSheet7);
+		Expense e19 = new Expense(null, 1, "Aluguél", new BigDecimal(1250.00), false, spreadSheet7);
+		Expense e20 = new Expense(null, 2, "Luz", new BigDecimal(250.00), false, spreadSheet7);
+		Expense e21 = new Expense(null, 3, "Gás", new BigDecimal(105.00), false, spreadSheet7);
 		
 		
 		spreadSheetRepository.saveAll(Arrays.asList(spreadSheet1,spreadSheet2, spreadSheet3, spreadSheet4, spreadSheet5, spreadSheet6, spreadSheet7));
 		
-		incomeRepository.saveAll(Arrays.asList(i1, i2, i3, i4, i5 , i6, i7, i8, i9, i10, i11, i12, i13, i14));
-		expenseRepository.saveAll(Arrays.asList(e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16, e17, e18, e19, e20, e21));
+		incomeRepository.saveAll(Arrays.asList(i1, i2, i3, i4, i5 , i6, i7, i8, i9, i10, i11, i12, i13, i14,i15,i16));
+		expenseRepository.saveAll(Arrays.asList(e1, e2, e3, e4, e5, e6, e7, e8, e9, e10, e11, e12, e13, e14, e15, e16, e17, e18, e19, e20, e21,e22,e23,e24));
 	}
 	
 	

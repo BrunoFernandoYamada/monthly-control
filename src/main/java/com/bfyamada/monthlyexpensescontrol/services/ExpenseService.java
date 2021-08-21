@@ -42,7 +42,7 @@ public class ExpenseService {
 	
 	public ExpenseDTO saveExpense(ExpenseDTO expenseDto) {
 		
-		Expense exp = repo.findByLine(expenseDto.getLine());
+		Expense exp = repo.findBySpreadSheetAndLine(new SpreadSheet(expenseDto.getYear(), expenseDto.getMonth()), expenseDto.getLine());
 		
 		if(exp != null) {
 			throw new IllegalArgumentException("Invalid request input");
@@ -61,6 +61,8 @@ public class ExpenseService {
 				if (expenseDto.isPaid()) {
 					spreadsheet.setTotalPaid(expenseDto.getValue());
 				}
+			}else{
+				expenseDto.setValue(new BigDecimal(0));
 			}
 			spreadsheetService.saveSpreadSheet(spreadsheet);
 		}

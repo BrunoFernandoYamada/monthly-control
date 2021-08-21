@@ -34,7 +34,7 @@ public class IncomeService {
 
 	public IncomeDTO saveIncome(IncomeDTO incomeDto) {
 		
-		Income inc = repo.findByLine(incomeDto.getLine());
+		Income inc = repo.findBySpreadSheetAndLine(new SpreadSheet(incomeDto.getYear(), incomeDto.getMonth()), incomeDto.getLine());
 		
 		if(inc != null) {
 			throw new IllegalArgumentException("Invalid request input");
@@ -52,7 +52,9 @@ public class IncomeService {
 				if (incomeDto.isReceived()) {
 					spreadsheet.setTotalPaid(incomeDto.getValue());
 				}
-			}
+			}else{
+                incomeDto.setValue(new BigDecimal(0));
+            }
 			spreadsheetService.saveSpreadSheet(spreadsheet);
 		}
 		 return toDTO(repo.save(fromDTO(incomeDto)));
