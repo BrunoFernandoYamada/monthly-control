@@ -6,31 +6,31 @@ import java.math.BigDecimal;
 
 import lombok.Data;
 
-public class IncomeDTO implements Serializable {
+public class ExpenseDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
 	private Integer id;
-	private String name;
 	private int line;
+	private String name;
 	private BigDecimal value;
-	private boolean isReceived;
+	private boolean isPaid;
 	private int year;
 	private int month;
 	
 	
-	public IncomeDTO() {
+	public ExpenseDTO() {
 		
 	}
 	
-	public IncomeDTO(Integer id, int line, String name, BigDecimal value, boolean isReceived, int year,
+	public ExpenseDTO(Integer id, int line, String name, BigDecimal value, boolean isPaid, int year,
 			int month) {
 		super();
 		this.id = id;
 		this.line = line;
 		this.name = name;
 		this.value = value;
-		this.isReceived = isReceived;
+		this.isPaid = isPaid;
 		this.year = year;
 		this.month = month;
 	}
@@ -61,11 +61,11 @@ public class IncomeDTO implements Serializable {
 	public void setValue(BigDecimal value) {
 		this.value = value;
 	}
-	public boolean isReceived() {
-		return isReceived;
+	public boolean isPaid() {
+		return isPaid;
 	}
-	public void setReceived(boolean isReceived) {
-		this.isReceived = isReceived;
+	public void setIsPaid(boolean isReceived) {
+		this.isPaid = isReceived;
 	}
 	public int getYear() {
 		return year;
@@ -79,5 +79,9 @@ public class IncomeDTO implements Serializable {
 	public void setMonth(int month) {
 		this.month = month;
 	}
+	
+	
 
+	
+	
 }

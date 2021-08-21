@@ -10,10 +10,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "Income_TB")
@@ -25,13 +25,11 @@ public class Income implements Serializable {
 
 	}
 
-	public Income(String id, @NotEmpty(message = "name of income is mantatory") String name, String description,
-			@NotNull(message = "value of income is mantatory") BigDecimal value, boolean isReceived,
-			SpreadSheet spreadSheet) {
+	public Income(Integer id, int line, String name, BigDecimal value, boolean isReceived, SpreadSheet spreadSheet) {
 		super();
-		Id = id;
+		this.id = id;
+		this.line = line;
 		this.name = name;
-		this.description = description;
 		this.value = value;
 		this.isReceived = isReceived;
 		this.spreadSheet = spreadSheet;
@@ -39,32 +37,39 @@ public class Income implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String Id;
+	private Integer id;
 
-	@NotEmpty(message = "name of income is mantatory")
+	@NotNull(message = "name of income is mantatory")
 	@Column(nullable = false)
+	private int line;
+
+	@Column(nullable = true)
 	private String name;
 
 	@Column(nullable = true)
-	private String description;
-
-	@NotNull(message = "value of income is mantatory")
-	@Column(nullable = false)
 	private BigDecimal value;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private boolean isReceived;
 
 	@JsonIgnore
 	@ManyToOne
 	private SpreadSheet spreadSheet;
 
-	public String getId() {
-		return Id;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setId(String id) {
-		Id = id;
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public int getLine() {
+		return line;
+	}
+
+	public void setLine(int line) {
+		this.line = line;
 	}
 
 	public String getName() {
@@ -73,14 +78,6 @@ public class Income implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public BigDecimal getValue() {

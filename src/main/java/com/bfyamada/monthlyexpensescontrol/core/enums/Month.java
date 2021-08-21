@@ -15,10 +15,10 @@ public enum Month {
 	NOVENBER(11, "November"),
 	DECEMBER(12, "December");
 	
-	private int cod;
-	private String name;
+	private final int cod;
+	private final String name;
 	
-	private Month(int cod, String name) {
+	Month(int cod, String name) {
 		this.cod = cod;
 		this.name = name;
 	}

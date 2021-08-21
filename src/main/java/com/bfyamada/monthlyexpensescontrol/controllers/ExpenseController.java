@@ -8,12 +8,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.bfyamada.monthlyexpensescontrol.core.domain.Expense;
+import com.bfyamada.monthlyexpensescontrol.core.dto.ExpenseDTO;
+import com.bfyamada.monthlyexpensescontrol.core.dto.IncomeDTO;
 import com.bfyamada.monthlyexpensescontrol.services.ExpenseService;
 
 @RestController
@@ -24,20 +27,26 @@ public class ExpenseController {
 	private ExpenseService service;
 	
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Expense> findById(@PathVariable Integer id){
+	public ResponseEntity<ExpenseDTO> findById(@PathVariable Integer id){
 		return ResponseEntity.ok(service.findById(id));	
 	}
 	
 	@GetMapping(value = "/{year}/{month}")
-	public ResponseEntity<List<Expense>> findBySpreadsheet(@PathVariable Integer year, @PathVariable Integer month){
+	public ResponseEntity<List<ExpenseDTO>> findBySpreadsheet(@PathVariable Integer year, @PathVariable Integer month){
 		return ResponseEntity.ok(service.findBySpreadSheetId(year, month));
 		
 	}
 
 	@PostMapping
-	public ResponseEntity<Void> saveExpense(@RequestBody Expense expense) {
-		Expense obj = service.saveExpense(expense);
-		URI uri =  ServletUriComponentsBuilder.fromCurrentRequest().path("/{year}/{month}").buildAndExpand(obj.getSpreadSheet().getYear(), obj.getSpreadSheet().getMonth()).toUri();
+	public ResponseEntity<Void> saveExpense(@RequestBody ExpenseDTO expense) {
+		ExpenseDTO obj = service.saveExpense(expense);
+		URI uri =  ServletUriComponentsBuilder.fromCurrentRequest().path("/{year}/{month}").buildAndExpand(obj.getYear(), obj.getMonth()).toUri();
 		return ResponseEntity.created(uri).build();
+	}
+	
+	@PutMapping(value="/{id}")
+	public ResponseEntity<Void> updateExpense(@PathVariable Integer id,@RequestBody ExpenseDTO expense) {
+		service.updateExpense(id, expense);
+		return ResponseEntity.ok().build();
 	}
 }

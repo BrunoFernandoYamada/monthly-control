@@ -34,7 +34,7 @@ public class User {
 
     @ElementCollection(fetch = FetchType.EAGER)
     @CollectionTable(name = "ROLES_TB")
-    private Set<Integer> roles = new HashSet<>();
+    private final Set<Integer> roles = new HashSet<>();
 
 
     public User() {

@@ -2,6 +2,7 @@ package com.bfyamada.monthlyexpensescontrol.core.domain;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.math.BigInteger;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,13 +26,11 @@ public class Expense implements Serializable {
 
 	}
 
-	public Expense(String id, @NotEmpty(message = "name of expense is mantatory") String name, String description,
-			@NotNull(message = "value of expense is mantatory") BigDecimal value, boolean isPaid,
-			SpreadSheet spreadSheet) {
+	public Expense(Integer id, int line, String name,BigDecimal value, boolean isPaid, SpreadSheet spreadSheet) {
 		super();
 		this.id = id;
+		this.line = line;
 		this.name = name;
-		this.description = description;
 		this.value = value;
 		this.isPaid = isPaid;
 		this.spreadSheet = spreadSheet;
@@ -39,32 +38,39 @@ public class Expense implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private String id;
-
-	@NotEmpty(message = "name of expense is mantatory")
+	private Integer id;
+	
+	@NotNull(message = "name of income is mantatory")
 	@Column(nullable = false)
+	private int line;
+
+	@Column(nullable = true)
 	private String name;
 
 	@Column(nullable = true)
-	private String description;
-
-	@NotNull(message = "value of expense is mantatory")
-	@Column(nullable = false)
 	private BigDecimal value;
 
-	@Column(nullable = false)
+	@Column(nullable = true)
 	private boolean isPaid;
 
 	@JsonIgnore
 	@ManyToOne
 	private SpreadSheet spreadSheet;
 
-	public String getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(String id) {
+	public void setId(Integer id) {
 		this.id = id;
+	}
+	
+	public int getLine() {
+		return line;
+	}
+
+	public void setLine(int line) {
+		this.line = line;
 	}
 
 	public String getName() {
@@ -73,14 +79,6 @@ public class Expense implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public BigDecimal getValue() {

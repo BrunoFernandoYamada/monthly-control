@@ -5,10 +5,10 @@ public enum Role {
     ADMIN(1, "ROLE_ADMIN"),
     USER(2, "ROLE_USER");
 
-    private int cod;
-    private String description;
+    private final int cod;
+    private final String description;
 
-    private Role(int cod, String description) {
+    Role(int cod, String description) {
         this.cod = cod;
         this.description = description;
     }

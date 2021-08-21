@@ -9,6 +9,8 @@ import com.bfyamada.monthlyexpensescontrol.core.domain.Expense;
 import com.bfyamada.monthlyexpensescontrol.core.domain.SpreadSheet;
 
 @Repository
-public interface ExpenseRepository extends JpaRepository<Expense, String> {
+public interface ExpenseRepository extends JpaRepository<Expense, Integer> {
 	List<Expense> findBySpreadSheet(SpreadSheet spreadSheet);
+
+	Expense findByLine(int line);
 }
